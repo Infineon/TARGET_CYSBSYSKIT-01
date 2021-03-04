@@ -15,6 +15,8 @@ The CYSBSYSKIT-01 library includes the following:
 * API documentation
 
 ### What Changed?
+#### v2.0.1
+* Minor update to better handle when to include the SCL library in the build
 #### v2.0.0
 * Updated design files and GeneratedSource with ModusToolbox 2.2 release
 * Migrated pin definitions into design.modus file

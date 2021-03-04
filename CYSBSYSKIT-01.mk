@@ -34,11 +34,17 @@ DEVICE:=CY8C624AFNI-S2D43
 # Default target core to CM4 if not already set
 CORE?=CM4
 # Basic architecture specific components
-COMPONENTS+=CAT1A
+COMPONENTS+=CAT1A SCL
 
 ifeq ($(CORE),CM4)
 # Additional components supported by the target
 COMPONENTS+= BSP_DESIGN_MODUS PSOC6HAL 43012
 # Use CyHAL
 DEFINES+=CY_USING_HAL
+# Ignore WHD assets and instead use SCL.
+CY_IGNORE+=\
+$(SEARCH_whd-bsp-integration)\
+$(SEARCH_wifi-host-driver)\
+$(SEARCH_wifi-mw-core)\configs
+
 endif
