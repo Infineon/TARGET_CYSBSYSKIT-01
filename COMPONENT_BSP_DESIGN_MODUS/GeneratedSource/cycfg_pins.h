@@ -5,12 +5,12 @@
 * Pin configuration
 * This file was automatically generated and should not be modified.
 * Tools Package 2.2.0.2801
-* latest-v2.X 2.0.0.6211
+* mtb-pdl-cat1 2.0.0.6211
 * personalities 3.0.0.0
 * udd 3.0.0.562
 *
 ********************************************************************************
-* Copyright 2020 Cypress Semiconductor Corporation
+* Copyright 2021 Cypress Semiconductor Corporation
 * SPDX-License-Identifier: Apache-2.0
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,17 +31,72 @@
 
 #include "cycfg_notices.h"
 #include "cy_gpio.h"
-#include "cycfg_routing.h"
 #if defined (CY_USING_HAL)
 	#include "cyhal_hwmgr.h"
 #endif //defined (CY_USING_HAL)
+#include "cycfg_routing.h"
 
 #if defined(__cplusplus)
 extern "C" {
 #endif
 
+#define CYBSP_WCO_IN_ENABLED 1U
+#define CYBSP_WCO_IN_PORT GPIO_PRT0
+#define CYBSP_WCO_IN_PORT_NUM 0U
+#define CYBSP_WCO_IN_PIN 0U
+#define CYBSP_WCO_IN_NUM 0U
+#define CYBSP_WCO_IN_DRIVEMODE CY_GPIO_DM_ANALOG
+#define CYBSP_WCO_IN_INIT_DRIVESTATE 1
+#ifndef ioss_0_port_0_pin_0_HSIOM
+	#define ioss_0_port_0_pin_0_HSIOM HSIOM_SEL_GPIO
+#endif
+#define CYBSP_WCO_IN_HSIOM ioss_0_port_0_pin_0_HSIOM
+#define CYBSP_WCO_IN_IRQ ioss_interrupts_gpio_0_IRQn
 #if defined (CY_USING_HAL)
-	#define CYBSP_USER_BTN (P0_4)
+	#define CYBSP_WCO_IN_HAL_PORT_PIN P0_0
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
+	#define CYBSP_WCO_IN P0_0
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
+	#define CYBSP_WCO_IN_HAL_IRQ CYHAL_GPIO_IRQ_NONE
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
+	#define CYBSP_WCO_IN_HAL_DIR CYHAL_GPIO_DIR_INPUT 
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
+	#define CYBSP_WCO_IN_HAL_DRIVEMODE CYHAL_GPIO_DRIVE_ANALOG
+#endif //defined (CY_USING_HAL)
+#define CYBSP_WCO_OUT_ENABLED 1U
+#define CYBSP_WCO_OUT_PORT GPIO_PRT0
+#define CYBSP_WCO_OUT_PORT_NUM 0U
+#define CYBSP_WCO_OUT_PIN 1U
+#define CYBSP_WCO_OUT_NUM 1U
+#define CYBSP_WCO_OUT_DRIVEMODE CY_GPIO_DM_ANALOG
+#define CYBSP_WCO_OUT_INIT_DRIVESTATE 1
+#ifndef ioss_0_port_0_pin_1_HSIOM
+	#define ioss_0_port_0_pin_1_HSIOM HSIOM_SEL_GPIO
+#endif
+#define CYBSP_WCO_OUT_HSIOM ioss_0_port_0_pin_1_HSIOM
+#define CYBSP_WCO_OUT_IRQ ioss_interrupts_gpio_0_IRQn
+#if defined (CY_USING_HAL)
+	#define CYBSP_WCO_OUT_HAL_PORT_PIN P0_1
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
+	#define CYBSP_WCO_OUT P0_1
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
+	#define CYBSP_WCO_OUT_HAL_IRQ CYHAL_GPIO_IRQ_NONE
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
+	#define CYBSP_WCO_OUT_HAL_DIR CYHAL_GPIO_DIR_INPUT 
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
+	#define CYBSP_WCO_OUT_HAL_DRIVEMODE CYHAL_GPIO_DRIVE_ANALOG
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
+	#define CYBSP_USER_BTN1 (P0_4)
+	#define CYBSP_USER_BTN CYBSP_USER_BTN1
 #endif //defined (CY_USING_HAL)
 #if defined (CY_USING_HAL)
 	#define CYBSP_GPIOA0 (P10_0)
@@ -68,7 +123,8 @@ extern "C" {
 	#define CYBSP_THERM_OUT (P10_7)
 #endif //defined (CY_USING_HAL)
 #if defined (CY_USING_HAL)
-	#define CYBSP_USER_LED (P11_1)
+	#define CYBSP_USER_LED1 (P11_1)
+	#define CYBSP_USER_LED CYBSP_USER_LED1
 #endif //defined (CY_USING_HAL)
 #if defined (CY_USING_HAL)
 	#define CYBSP_QSPI_SS (P11_2)
@@ -89,10 +145,31 @@ extern "C" {
 	#define CYBSP_QSPI_SCK (P11_7)
 #endif //defined (CY_USING_HAL)
 #if defined (CY_USING_HAL)
+	#define CYBSP_BT_POWER (P12_0)
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
+	#define CYBSP_BT_DEVICE_WAKE (P12_2)
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
+	#define CYBSP_BT_HOST_WAKE (P12_3)
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
 	#define CYBSP_ECO_IN (P12_6)
 #endif //defined (CY_USING_HAL)
 #if defined (CY_USING_HAL)
 	#define CYBSP_ECO_OUT (P12_7)
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
+	#define CYBSP_BT_UART_RX (P13_4)
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
+	#define CYBSP_BT_UART_TX (P13_5)
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
+	#define CYBSP_BT_UART_RTS (P13_6)
+#endif //defined (CY_USING_HAL)
+#if defined (CY_USING_HAL)
+	#define CYBSP_BT_UART_CTS (P13_7)
 #endif //defined (CY_USING_HAL)
 #if defined (CY_USING_HAL)
 	#define CYBSP_SPI_MOSI (P5_0)
@@ -206,6 +283,14 @@ extern "C" {
 	#define CYBSP_GPIO6 (P9_7)
 #endif //defined (CY_USING_HAL)
 
+extern const cy_stc_gpio_pin_config_t CYBSP_WCO_IN_config;
+#if defined (CY_USING_HAL)
+	extern const cyhal_resource_inst_t CYBSP_WCO_IN_obj;
+#endif //defined (CY_USING_HAL)
+extern const cy_stc_gpio_pin_config_t CYBSP_WCO_OUT_config;
+#if defined (CY_USING_HAL)
+	extern const cyhal_resource_inst_t CYBSP_WCO_OUT_obj;
+#endif //defined (CY_USING_HAL)
 extern const cy_stc_gpio_pin_config_t CYBSP_SWDIO_config;
 #if defined (CY_USING_HAL)
 	extern const cyhal_resource_inst_t CYBSP_SWDIO_obj;

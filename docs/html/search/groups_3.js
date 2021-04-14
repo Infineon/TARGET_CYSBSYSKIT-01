@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['j2_20header_20pins',['J2 Header Pins',['../group__group__bsp__pins__j2.html',1,'']]],
-  ['j6_20header_20pins',['J6 Header Pins',['../group__group__bsp__pins__j6.html',1,'']]]
+  ['pin_20states',['Pin States',['../group__group__bsp__pin__state.html',1,'']]],
+  ['pin_20mappings',['Pin Mappings',['../group__group__bsp__pins.html',1,'']]]
 ];

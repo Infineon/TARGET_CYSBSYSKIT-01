@@ -7,7 +7,7 @@
  *
  ***************************************************************************************************
  * \copyright
- * Copyright 2018-2020 Cypress Semiconductor Corporation
+ * Copyright 2018-2021 Cypress Semiconductor Corporation
  * SPDX-License-Identifier: Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -143,6 +143,8 @@ cy_rslt_t cybsp_init(void)
     cyhal_hwmgr_allocate_clock(&clock1, CY_SYSCLK_DIV_16_BIT, true);
     cyhal_clock_divider_t clock2;
     cyhal_hwmgr_allocate_clock(&clock2, CY_SYSCLK_DIV_16_BIT, true);
+    cyhal_lptimer_t obj;
+    cyhal_hwmgr_allocate(CYHAL_RSC_LPTIMER, &(obj.resource));
 
     // CYHAL_HWMGR_RSLT_ERR_INUSE error code could be returned if any needed for BSP resource was
     // reserved by user previously. Please review the Device Configurator (design.modus) and the BSP

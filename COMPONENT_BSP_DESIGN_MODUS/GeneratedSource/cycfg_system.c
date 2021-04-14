@@ -5,12 +5,12 @@
 * System configuration
 * This file was automatically generated and should not be modified.
 * Tools Package 2.2.0.2801
-* latest-v2.X 2.0.0.6211
+* mtb-pdl-cat1 2.0.0.6211
 * personalities 3.0.0.0
 * udd 3.0.0.562
 *
 ********************************************************************************
-* Copyright 2020 Cypress Semiconductor Corporation
+* Copyright 2021 Cypress Semiconductor Corporation
 * SPDX-License-Identifier: Apache-2.0
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,10 +33,8 @@
 #define CY_CFG_SYSCLK_PLL_ERROR 3
 #define CY_CFG_SYSCLK_FLL_ERROR 4
 #define CY_CFG_SYSCLK_WCO_ERROR 5
-#define CY_CFG_SYSCLK_CLKALTSYSTICK_ENABLED 1
-#define CY_CFG_SYSCLK_CLKALTSYSTICK_SOURCE CY_SYSTICK_CLOCK_SOURCE_CLK_LF
 #define CY_CFG_SYSCLK_CLKBAK_ENABLED 1
-#define CY_CFG_SYSCLK_CLKBAK_SOURCE CY_SYSCLK_BAK_IN_CLKLF
+#define CY_CFG_SYSCLK_CLKBAK_SOURCE CY_SYSCLK_BAK_IN_WCO
 #define CY_CFG_SYSCLK_CLKFAST_ENABLED 1
 #define CY_CFG_SYSCLK_CLKFAST_DIVIDER 0
 #define CY_CFG_SYSCLK_CLKHF0_ENABLED 1
@@ -84,9 +82,12 @@
 #define CY_CFG_SYSCLK_PLL0_OUTPUT_FREQ 100000000
 #define CY_CFG_SYSCLK_CLKSLOW_ENABLED 1
 #define CY_CFG_SYSCLK_CLKSLOW_DIVIDER 0
-#define CY_CFG_SYSCLK_CLKTIMER_ENABLED 1
-#define CY_CFG_SYSCLK_CLKTIMER_SOURCE CY_SYSCLK_CLKTIMER_IN_IMO
-#define CY_CFG_SYSCLK_CLKTIMER_DIVIDER 0U
+#define CY_CFG_SYSCLK_WCO_ENABLED 1
+#define CY_CFG_SYSCLK_WCO_IN_PRT GPIO_PRT0
+#define CY_CFG_SYSCLK_WCO_IN_PIN 0U
+#define CY_CFG_SYSCLK_WCO_OUT_PRT GPIO_PRT0
+#define CY_CFG_SYSCLK_WCO_OUT_PIN 1U
+#define CY_CFG_SYSCLK_WCO_BYPASS CY_SYSCLK_WCO_BYPASSED
 
 #if defined (CY_DEVICE_SECURE) && (CY_CPU_CORTEX_M4)
 	static cy_stc_pra_system_config_t srss_0_clock_0_secureConfig;
@@ -628,15 +629,9 @@ __WEAK void cycfg_ClockStartupError(uint32_t error)
 	}
 #endif //defined (CY_DEVICE_SECURE) && (CY_CPU_CORTEX_M4)
 #if ((!CY_CPU_CORTEX_M4) || (!defined(CY_DEVICE_SECURE)))
-	__STATIC_INLINE void Cy_SysClk_ClkAltSysTickInit()
-	{
-	    Cy_SysTick_SetClockSource(CY_SYSTICK_CLOCK_SOURCE_CLK_LF);
-	}
-#endif //((!CY_CPU_CORTEX_M4) || (!defined(CY_DEVICE_SECURE)))
-#if ((!CY_CPU_CORTEX_M4) || (!defined(CY_DEVICE_SECURE)))
 	__STATIC_INLINE void Cy_SysClk_ClkBakInit()
 	{
-	    Cy_SysClk_ClkBakSetSource(CY_SYSCLK_BAK_IN_CLKLF);
+	    Cy_SysClk_ClkBakSetSource(CY_SYSCLK_BAK_IN_WCO);
 	}
 #endif //((!CY_CPU_CORTEX_M4) || (!defined(CY_DEVICE_SECURE)))
 #if ((!CY_CPU_CORTEX_M4) || (!defined(CY_DEVICE_SECURE)))
@@ -680,7 +675,7 @@ __WEAK void cycfg_ClockStartupError(uint32_t error)
 	__STATIC_INLINE void Cy_SysClk_ClkLfInit()
 	{
 	    /* The WDT is unlocked in the default startup code */
-	    Cy_SysClk_ClkLfSetSource(CY_SYSCLK_CLKLF_IN_ILO);
+	    Cy_SysClk_ClkLfSetSource(CY_SYSCLK_CLKLF_IN_WCO);
 	}
 #endif //((!CY_CPU_CORTEX_M4) || (!defined(CY_DEVICE_SECURE)))
 #if ((!CY_CPU_CORTEX_M4) || (!defined(CY_DEVICE_SECURE)))
@@ -745,12 +740,15 @@ __WEAK void cycfg_ClockStartupError(uint32_t error)
 	}
 #endif //((!CY_CPU_CORTEX_M4) || (!defined(CY_DEVICE_SECURE)))
 #if ((!CY_CPU_CORTEX_M4) || (!defined(CY_DEVICE_SECURE)))
-	__STATIC_INLINE void Cy_SysClk_ClkTimerInit()
+	__STATIC_INLINE void Cy_SysClk_WcoInit()
 	{
-	    Cy_SysClk_ClkTimerDisable();
-	    Cy_SysClk_ClkTimerSetSource(CY_SYSCLK_CLKTIMER_IN_IMO);
-	    Cy_SysClk_ClkTimerSetDivider(0U);
-	    Cy_SysClk_ClkTimerEnable();
+	    (void)Cy_GPIO_Pin_FastInit(GPIO_PRT0, 0U, 0x00U, 0x00U, HSIOM_SEL_GPIO);
+	    (void)Cy_GPIO_Pin_FastInit(GPIO_PRT0, 1U, 0x00U, 0x00U, HSIOM_SEL_GPIO);
+	    Cy_SysClk_WcoBypass(CY_SYSCLK_WCO_BYPASSED);
+	    if (CY_SYSCLK_SUCCESS != Cy_SysClk_WcoEnable(1000000UL))
+	    {
+	        cycfg_ClockStartupError(CY_CFG_SYSCLK_WCO_ERROR);
+	    }
 	}
 #endif //((!CY_CPU_CORTEX_M4) || (!defined(CY_DEVICE_SECURE)))
 

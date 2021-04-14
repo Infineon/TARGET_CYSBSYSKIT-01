@@ -1,9 +1,8 @@
 /*******************************************************************************
-* File Name: cycfg_notices.h
+* File Name: cycfg_connectivity_bt.c
 *
 * Description:
-* Contains warnings and errors that occurred while generating code for the
-* design.
+* Connectivity BT configuration
 * This file was automatically generated and should not be modified.
 * Tools Package 2.2.0.2801
 * mtb-pdl-cat1 2.0.0.6211
@@ -27,8 +26,5 @@
 * limitations under the License.
 ********************************************************************************/
 
-#if !defined(CYCFG_NOTICES_H)
-#define CYCFG_NOTICES_H
+#include "cycfg_connectivity_bt.h"
 
-
-#endif /* CYCFG_NOTICES_H */
