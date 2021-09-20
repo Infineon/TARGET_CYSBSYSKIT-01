@@ -3,11 +3,13 @@
  *
  * Description:
  * Provides initialization code for starting up the hardware contained on the
- * Cypress board.
+ * Infineon board.
  *
  ***************************************************************************************************
  * \copyright
- * Copyright 2018-2021 Cypress Semiconductor Corporation
+ * Copyright 2018-2021 Cypress Semiconductor Corporation (an Infineon company) or
+ * an affiliate of Cypress Semiconductor Corporation
+ *
  * SPDX-License-Identifier: Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -138,13 +140,26 @@ cy_rslt_t cybsp_init(void)
     #endif
     #endif
 
-    // Reserve clock dividers used by NP
-    cyhal_clock_divider_t clock1;
-    cyhal_hwmgr_allocate_clock(&clock1, CY_SYSCLK_DIV_16_BIT, true);
-    cyhal_clock_divider_t clock2;
-    cyhal_hwmgr_allocate_clock(&clock2, CY_SYSCLK_DIV_16_BIT, true);
-    cyhal_lptimer_t obj;
-    cyhal_hwmgr_allocate(CYHAL_RSC_LPTIMER, &(obj.resource));
+    // Reserve resources used by NP
+    cyhal_resource_inst_t clock1 =
+        { .type        = CYHAL_RSC_CLOCK, .block_num = CYHAL_CLOCK_BLOCK_PERIPHERAL_16BIT,
+          .channel_num = 0 };
+    cyhal_resource_inst_t clock2 =
+        { .type        = CYHAL_RSC_CLOCK, .block_num = CYHAL_CLOCK_BLOCK_PERIPHERAL_16BIT,
+          .channel_num = 0 };
+    cyhal_resource_inst_t lptimer = { .type = CYHAL_RSC_LPTIMER, .block_num = 0, .channel_num = 0 };
+    if (CY_RSLT_SUCCESS == result)
+    {
+        result = cyhal_hwmgr_reserve(&clock1);
+    }
+    if (CY_RSLT_SUCCESS == result)
+    {
+        result = cyhal_hwmgr_reserve(&clock2);
+    }
+    if (CY_RSLT_SUCCESS == result)
+    {
+        result = cyhal_hwmgr_reserve(&lptimer);
+    }
 
     // CYHAL_HWMGR_RSLT_ERR_INUSE error code could be returned if any needed for BSP resource was
     // reserved by user previously. Please review the Device Configurator (design.modus) and the BSP
