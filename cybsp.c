@@ -146,8 +146,7 @@ cy_rslt_t cybsp_init(void)
           .channel_num = 0 };
     cyhal_resource_inst_t clock2 =
         { .type        = CYHAL_RSC_CLOCK, .block_num = CYHAL_CLOCK_BLOCK_PERIPHERAL_16BIT,
-          .channel_num = 0 };
-    cyhal_resource_inst_t lptimer = { .type = CYHAL_RSC_LPTIMER, .block_num = 0, .channel_num = 0 };
+          .channel_num = 1 };
     if (CY_RSLT_SUCCESS == result)
     {
         result = cyhal_hwmgr_reserve(&clock1);
@@ -155,10 +154,6 @@ cy_rslt_t cybsp_init(void)
     if (CY_RSLT_SUCCESS == result)
     {
         result = cyhal_hwmgr_reserve(&clock2);
-    }
-    if (CY_RSLT_SUCCESS == result)
-    {
-        result = cyhal_hwmgr_reserve(&lptimer);
     }
 
     // CYHAL_HWMGR_RSLT_ERR_INUSE error code could be returned if any needed for BSP resource was
