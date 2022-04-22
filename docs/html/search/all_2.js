@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['led_20pins',['LED Pins',['../group__group__bsp__pins__led.html',1,'']]]
+  ['peripheral_20default_20bsp_20settings_0',['Peripheral Default BSP Settings',['../md_source_bsps_cat1a_CYSBSYSKIT_01_bsp_settings.html',1,'']]]
 ];
