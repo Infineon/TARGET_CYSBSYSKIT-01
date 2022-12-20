@@ -7,7 +7,7 @@
  *
  ***************************************************************************************************
  * \copyright
- * Copyright 2018-2021 Cypress Semiconductor Corporation (an Infineon company) or
+ * Copyright 2018-2022 Cypress Semiconductor Corporation (an Infineon company) or
  * an affiliate of Cypress Semiconductor Corporation
  *
  * SPDX-License-Identifier: Apache-2.0
@@ -54,20 +54,6 @@ extern "C" {
 #ifndef CYBSP_SYSCLK_PM_CALLBACK_ORDER
     #define CYBSP_SYSCLK_PM_CALLBACK_ORDER  (255u)
 #endif
-
-#if defined(CYBSP_WIFI_CAPABLE) && defined(CY_USING_HAL)
-static cyhal_sdio_t sdio_obj;
-
-//--------------------------------------------------------------------------------------------------
-// cybsp_get_wifi_sdio_obj
-//--------------------------------------------------------------------------------------------------
-cyhal_sdio_t* cybsp_get_wifi_sdio_obj(void)
-{
-    return &sdio_obj;
-}
-
-
-#endif // if defined(CYBSP_WIFI_CAPABLE) && defined(CY_USING_HAL)
 
 //--------------------------------------------------------------------------------------------------
 // cybsp_register_sysclk_pm_callback
@@ -122,9 +108,7 @@ cy_rslt_t cybsp_init(void)
     cy_rslt_t result = CY_RSLT_SUCCESS;
     #endif // if defined(CY_USING_HAL)
 
-    #if defined(COMPONENT_BSP_DESIGN_MODUS) || defined(COMPONENT_CUSTOM_DESIGN_MODUS)
     init_cycfg_all();
-    #endif
 
     if (CY_RSLT_SUCCESS == result)
     {

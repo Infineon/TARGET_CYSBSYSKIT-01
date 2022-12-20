@@ -1,0 +1,29 @@
+[Device=CYSBSYS-RP01/CY8C624AFNI-S2D43]
+
+[Blocks]
+# UART
+# CYBSP_DEBUG_UART
+scb[10]
+# CYBSP_DEBUG_UART_RX
+ioss[0].port[5].pin[4]
+# CYBSP_DEBUG_UART_TX
+ioss[0].port[5].pin[5]
+# CYBSP_DEBUG_UART_RTS
+ioss[0].port[5].pin[6]
+# CYBSP_DEBUG_UART_CTS
+ioss[0].port[5].pin[7]
+
+# CYBSP_DEBUG_UART_CLK_DIV
+peri[0].div_16[0]
+
+# POWER
+srss[0].power[0]
+
+# RTC
+srss[0].rtc[0]
+
+# CM0(NP) I2C
+# CYBSP_I2C_SCL
+ioss[0].port[8].pin[0]
+# CYBSP_I2C_SDA
+ioss[0].port[8].pin[1]

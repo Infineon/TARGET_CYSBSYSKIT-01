@@ -2,7 +2,7 @@
 
 ## Overview
 
-The CYSBSYSKIT-01 Rapid IoT Connect Platform RP01 Feather Kit comes with a CYSBSYS-RP01 Rapid IoT Connect module which enables a secure, scalable, and reliable connection to cloud. CYSBSYS-RP01 is a pre-certified 802.11ac-friendly dual-band (2.4 and 5.0 GHz) Wi-Fi and Bluetooth 5.0-compliant combo radio module. CYSBSYS-RP01 when combined with Infineon SubSystems connectivity services enables rapid deployment of devices on to an IoT network.
+The CYSBSYSKIT-01 Rapid IoT Connect Platform RP01 Feather Kit comes with a CYSBSYS-RP01 Rapid IoT Connect module which enables a secure, scalable, and reliable connection to cloud. CYSBSYS-RP01 is a pre-certified 802.11ac-friendly dual- band (2.4 and 5.0 GHz) Wi-Fi and Bluetooth 5.0-compliant combo radio module. CYSBSYS-RP01 when combined with Infineon SubSystems connectivity services enables rapid deployment of devices on to an IoT network.
 
 ![](docs/html/board.png)
 
@@ -27,7 +27,6 @@ To use code from the BSP, simply include a reference to `cybsp.h`.
 ### Kit Contents:
 
 * CYSBSYSKIT-01 Rapid IoT Connect Platform RP01 Feather Kit
-* Adafruit 128 x 32 OLED Screen FeatherWing (Adafruit product ID: 2900)
 
 ## BSP Configuration
 
@@ -35,8 +34,6 @@ The BSP has a few hooks that allow its behavior to be configured. Some of these 
 
 Components:
 * Device specific category reference (e.g.: CAT1) - This component, enabled by default, pulls in any device specific code for this board.
-* BSP_DESIGN_MODUS - This component, enabled by default, causes the Configurator generated code for this specific BSP to be included. This should not be used at the same time as the CUSTOM_DESIGN_MODUS component.
-* CUSTOM_DESIGN_MODUS - This component, disabled by default, causes the Configurator generated code from the application to be included. This assumes that the application provides configurator generated code. This should not be used at the same time as the BSP_DESIGN_MODUS component.
 
 Defines:
 * CYBSP_WIFI_CAPABLE - This define, disabled by default, causes the BSP to initialize the interface to an onboard wireless chip if it has one.
@@ -62,7 +59,7 @@ See the [BSP API Reference Manual][api] for the complete list of the provided in
 
 ## More information
 * [CYSBSYSKIT-01 BSP API Reference Manual][api]
-* [CYSBSYSKIT-01 Documentation](http://www.cypress.com/CYSBSYSKIT-01)
+* [CYSBSYSKIT-01 Documentation](https://www.infineon.com/cms/en/product/evaluation-boards/CYSBSYSKIT-01)
 * [Cypress Semiconductor, an Infineon Technologies Company](http://www.cypress.com)
 * [Infineon GitHub](https://github.com/infineon)
 * [ModusToolbox™](https://www.cypress.com/products/modustoolbox-software-environment)
@@ -71,4 +68,4 @@ See the [BSP API Reference Manual][api] for the complete list of the provided in
 [settings]: https://infineon.github.io/TARGET_CYSBSYSKIT-01/html/md_bsp_settings.html
 
 ---
-© Cypress Semiconductor Corporation (an Infineon company) or an affiliate of Cypress Semiconductor Corporation, 2019-2021.
+© Cypress Semiconductor Corporation (an Infineon company) or an affiliate of Cypress Semiconductor Corporation, 2019-2022.
