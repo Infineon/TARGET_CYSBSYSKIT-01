@@ -2,7 +2,7 @@
 
 ## Overview
 
-The CYSBSYSKIT-01 Rapid IoT Connect Platform RP01 Feather Kit comes with a CYSBSYS-RP01 Rapid IoT Connect module which enables a secure, scalable, and reliable connection to cloud. CYSBSYS-RP01 is a pre-certified 802.11ac-friendly dual- band (2.4 and 5.0 GHz) Wi-Fi and Bluetooth 5.0-compliant combo radio module. CYSBSYS-RP01 when combined with Infineon SubSystems connectivity services enables rapid deployment of devices on to an IoT network.
+CYSBSYSKIT-01: Pre-configured Rapid IoT Connect Platform RP01 Feather Kit with a CYSBSYS-RP01 Rapid IoT Connect module which enables a secure, scalable, and reliable connection to cloud. CYSBSYS-RP01 is a pre-certified 802.11ac-friendly dual- band (2.4 and 5.0 GHz) Wi-Fi and Bluetooth 5.0-compliant combo radio module. 
 
 ![](docs/html/board.png)
 
@@ -12,7 +12,7 @@ To use code from the BSP, simply include a reference to `cybsp.h`.
 
 ### Kit Features:
 
-* CYSBSYS-RP01 module
+* CYSBSYS-RP01 module with managed firmware for device management and radio chip. 
 * 512KB Flash and 512KB SRAM for customer application on CM4
 * 512-Mbit external Quad SPI NOR Flash that provides a fast, expandable memory for data and code
 * KitProg3 on-board SWD programmer/debugger, USB-UART, and USB-I2C bridge functionality

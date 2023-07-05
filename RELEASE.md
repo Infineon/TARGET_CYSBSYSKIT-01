@@ -1,5 +1,5 @@
 # CYSBSYSKIT-01 BSP Release Notes
-The CYSBSYSKIT-01 Rapid IoT Connect Platform RP01 Feather Kit comes with a CYSBSYS-RP01 Rapid IoT Connect module which enables a secure, scalable, and reliable connection to cloud. CYSBSYS-RP01 is a pre-certified 802.11ac-friendly dual- band (2.4 and 5.0 GHz) Wi-Fi and Bluetooth 5.0-compliant combo radio module. CYSBSYS-RP01 when combined with Infineon SubSystems connectivity services enables rapid deployment of devices on to an IoT network.
+CYSBSYSKIT-01: Pre-configured Rapid IoT Connect Platform RP01 Feather Kit with a CYSBSYS-RP01 Rapid IoT Connect module which enables a secure, scalable, and reliable connection to cloud. CYSBSYS-RP01 is a pre-certified 802.11ac-friendly dual- band (2.4 and 5.0 GHz) Wi-Fi and Bluetooth 5.0-compliant combo radio module. 
 
 NOTE: BSPs are versioned by family. This means that version 1.2.0 of any BSP in a family (eg: PSoC™ 6) will have the same software maturity level. However, not all updates are necessarily applicable for each BSP in the family so not all version numbers will exist for each board. Additionally, new BSPs may not start at version 1.0.0. In the event of adding a common feature across all BSPs, the libraries are assigned the same version number. For example if BSP_A is at v1.3.0 and BSP_B is at v1.2.0, the event will trigger a version update to v1.4.0 for both BSP_A and BSP_B. This allows the common feature to be tracked in a consistent way.
 
@@ -15,6 +15,10 @@ The CYSBSYSKIT-01 library includes the following:
 * API documentation
 
 ### What Changed?
+#### v4.2.0
+* Updated linker scripts and startup code to align with mtb-pdl-cat1 v3.4.0
+* Added functionality to enable BSP Assistant chip flow
+* Added capabilities to match BSPS created by BSP Assistant chip flow
 #### v4.1.0
 * Add macro `CYBSP_USER_BTN_DRIVE` indicating the drive mode that should be used for user buttons
 * PSoC 64 boards: Fix cybsp_init not recognizing that a prebuilt CM0+ image is in use when using TFM.
@@ -82,8 +86,8 @@ This version of the CYSBSYSKIT-01 BSP was validated for compatibility with the f
 
 | Software and Tools                        | Version |
 | :---                                      | :----:  |
-| ModusToolbox™ Software Environment        | 3.0.0   |
-| GCC Compiler                              | 10.3.1  |
+| ModusToolbox™ Software Environment        | 3.1.0   |
+| GCC Compiler                              | 12.2.1  |
 | IAR Compiler                              | 9.30.1  |
 | ARM Compiler                              | 6.16    |
 
