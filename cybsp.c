@@ -96,17 +96,20 @@ cy_rslt_t cybsp_init(void)
     {
         result = cyhal_syspm_init();
     }
+    #else // if defined(CY_USING_HAL)
+    cy_rslt_t result = CY_RSLT_SUCCESS;
+    #endif // if defined(CY_USING_HAL)
 
     #ifdef CY_CFG_PWR_VDDA_MV
     if (CY_RSLT_SUCCESS == result)
     {
+        #if defined(CY_USING_HAL)
         cyhal_syspm_set_supply_voltage(CYHAL_VOLTAGE_SUPPLY_VDDA, CY_CFG_PWR_VDDA_MV);
+        #elif defined(CY_USING_HAL_LITE)
+        cyhal_system_set_supply_voltage(CYHAL_VOLTAGE_SUPPLY_VDDA, CY_CFG_PWR_VDDA_MV);
+        #endif
     }
     #endif
-
-    #else // if defined(CY_USING_HAL)
-    cy_rslt_t result = CY_RSLT_SUCCESS;
-    #endif // if defined(CY_USING_HAL)
 
     init_cycfg_all();
 
@@ -115,6 +118,7 @@ cy_rslt_t cybsp_init(void)
         result = cybsp_register_sysclk_pm_callback();
     }
 
+    #if defined(CY_USING_HAL)
     #if !defined(CY_CFG_PWR_SYS_IDLE_MODE)
     #ifdef __MBED__
     // Disable deep-sleep
@@ -143,6 +147,7 @@ cy_rslt_t cybsp_init(void)
     // CYHAL_HWMGR_RSLT_ERR_INUSE error code could be returned if any needed for BSP resource was
     // reserved by user previously. Please review the Device Configurator (design.modus) and the BSP
     // reservation list (cyreservedresources.list) to make sure no resources are reserved by both.
+    #endif // defined(CY_USING_HAL)
     return result;
 }
 
